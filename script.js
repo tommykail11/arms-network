@@ -312,10 +312,10 @@ var isis = function() {
       console.log(_game);
     },
     Agent: Agent,
+    AgentInventory: AgentInventory,
     AgentInventoryItem: AgentInventoryItem,
     Item: Item,
     City: City,
     Game: Game
-    
   }
 }();
