@@ -226,14 +226,6 @@ var isis = function() {
     printProfile(this.agent);
   }
 
-  Game.prototype.addToInventory = function(item, quantity) {
-    this.agent.inventory.push(item, quantity);
-  }
-
-  Game.prototype.removeFromInventory = function(item, quantity) {
-    this.agent.inventory.pop(item, quantity)
-  }
-
   AgentInventory = function() {
     this.inventory = [
       new AgentInventoryItem(_items[2], 20),
