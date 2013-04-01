@@ -227,10 +227,7 @@ var isis = function() {
   }
 
   AgentInventory = function() {
-    this.inventory = [
-      new AgentInventoryItem(_items[2], 20),
-      new AgentInventoryItem(_items[5], 5)
-    ];
+    this.inventory = [];
   }
 
   AgentInventory.prototype.findItem = function(item) {
