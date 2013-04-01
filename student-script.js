@@ -55,6 +55,7 @@ isis.Game.prototype.buyingItem = function(item) {
  * is trying to sell.
  */
 isis.Game.prototype.sellingItem = function(inventoryItem) {
+  var value = inventoryItem.item.currentPrice * inventoryItem.quantity;
   console.log('trying to sell ' + inventoryItem.item.name + ', I have ' + inventoryItem.quantity + ' worth $' + value);
 }
 
