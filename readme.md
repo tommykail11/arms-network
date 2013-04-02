@@ -11,5 +11,3 @@ This message will now self-destruct in 5
 2
 
 1
-
-#BOOM!
