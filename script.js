@@ -230,7 +230,7 @@ var isis = function() {
   
   Game.prototype.chooseBadThing = function() {
     // roll a die (d10) 1's are always bad things
-    var roll = 1; //getRandomIntInRange(1, 10);
+    var roll = getRandomIntInRange(1, 10);
     console.log('rolled ' + roll);
     if (roll === 1) {
       // pick a bad thing and run it
@@ -299,7 +299,7 @@ var isis = function() {
   }
   
   Agent.prototype.init = function() {
-    
+    // overrident by student code
   }
 
   Agent.prototype.getInventoryItem = function(index) {
