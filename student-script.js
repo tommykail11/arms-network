@@ -59,6 +59,38 @@ isis.Game.prototype.sellingItem = function(inventoryItem) {
   console.log('trying to sell ' + inventoryItem.item.name + ', I have ' + inventoryItem.quantity + ' worth $' + value);
 }
 
+
+/*
+ * This function is called when the game is initialized to produce a list of bad
+ * things which could happen to our travelling agent. 
+ *
+ * Make up a few more bad things that could happen to our agent!
+ * A few examples:
+ *   Customs Fare Hike (5% tax on all current money)
+ *   Search & Seizure (-$5000)
+ *
+ * N.B.
+ * The bad thing needs to follow the same format as the temporary bad thing
+ */
+isis.Game.prototype.initBadThings = function(badThings) {
+  badThings.push({
+    name: "Temporary bad thing!",
+    ohNoes: function(agent) {
+      alert("This is a demo bad thing, luckily nothing bad happened this time!");
+    }
+  });
+  
+  // Fill this one in with a new bad thing which could happen!
+  // If you want, copy and paste it to make more bad things!
+  badThings.push({
+    name: "Name your bad thing!",
+    ohNoes: function(agent) {
+      // Your bad thing code goes here
+    }
+  });
+  
+}
+
 /*************************/
 /****    isis.Agent   ****/
 /*************************/

@@ -72,6 +72,7 @@ var isis = function() {
         
           // Delegate to Student code
           _game.changeCity(city);
+          _game.chooseBadThing();
           _game.refreshViews();
         });
       } else {
@@ -202,14 +203,15 @@ var isis = function() {
   Game = function() {
     this.cities = _cities;
     this.currentCity = _cities[getRandomIntInRange(0, _cities.length)];
+    this.badThings = [];
     
     // var name = prompt('Agent: enter a codename');
     // this.player = new Player(name);
     // Call call init script from student code
     this.agent = new Agent();
-    this.agent.init();
     
     this.refreshViews();
+    this.initBadThings(this.badThings);
   }
 
   Game.prototype.refreshViews = function() {
@@ -224,6 +226,22 @@ var isis = function() {
 
     // display agent profile
     printProfile(this.agent);
+  }
+  
+  Game.prototype.chooseBadThing = function() {
+    // roll a die (d10) 1's are always bad things
+    var roll = 1; //getRandomIntInRange(1, 10);
+    console.log('rolled ' + roll);
+    if (roll === 1) {
+      // pick a bad thing and run it
+      var index = getRandomIntInRange(1, this.badThings.length) - 1;
+      var badThing = this.badThings[index];
+      console.log('Going to do: ' + badThing.name);
+      badThing.ohNoes(this.agent);
+      console.log('Bad thing done!');
+    } else {
+      alert ("Nothing bad happend!\nPhew!");
+    }
   }
 
   AgentInventory = function() {
@@ -276,6 +294,12 @@ var isis = function() {
     this.name = name;
     this.money = 1000;
     this.inventory = new AgentInventory();
+    
+    this.init();
+  }
+  
+  Agent.prototype.init = function() {
+    
   }
 
   Agent.prototype.getInventoryItem = function(index) {
@@ -298,7 +322,7 @@ var isis = function() {
     game: _game,
     
     debug: function() {
-      console.log(_game);
+      return _game;
     },
     Agent: Agent,
     AgentInventory: AgentInventory,
