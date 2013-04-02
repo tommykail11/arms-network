@@ -36,7 +36,7 @@ isis.Game.prototype.changeCity = function(newCity) {
  * Hint:
  * Use prompt() and confirm() to get and valid user input
  */
-isis.Game.prototype.buyingItem = function(item) {
+isis.Game.prototype.buyItem = function(item) {
   console.log('trying to buy ' + item.name);
 }
 
@@ -54,7 +54,7 @@ isis.Game.prototype.buyingItem = function(item) {
  * An AgentInventoryItem which contains the info about the item the game
  * is trying to sell.
  */
-isis.Game.prototype.sellingItem = function(inventoryItem) {
+isis.Game.prototype.sellItem = function(inventoryItem) {
   var value = inventoryItem.item.currentPrice * inventoryItem.quantity;
   console.log('trying to sell ' + inventoryItem.item.name + ', I have ' + inventoryItem.quantity + ' worth $' + value);
 }
