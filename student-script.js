@@ -24,6 +24,12 @@
  */
 isis.Game.prototype.changeCity = function(newCity) {
   console.log('trying to change city to ' + newCity.name);
+  this.currentCity = newCity;
+  for (i = 0; i < newCity.items.length; i++) {
+    var item = newCity.items[i];
+    item.recalculatePrice();
+    console.log(item);
+  }
 }
 
 /*
@@ -32,12 +38,24 @@ isis.Game.prototype.changeCity = function(newCity) {
  * User Story:
  * A player can buy items in a city. Each item has a cost and can be 
  * bought in bulk.
+
+ click buy, 
+ prompts for how many you want to buy, 
+ calculate the total price, 
+ reduce the balance by the total price, 
+ have it show up in the inventory
+ 
  *
  * Hint:
  * Use prompt() and confirm() to get and valid user input
  */
 isis.Game.prototype.buyItem = function(item) {
-  console.log('trying to buy ' + item.name);
+  // console.log('trying to buy ' + item.name);
+  var quantity = prompt("How many would you like to buy");
+  if (confirm("Are you sure?")) {
+    this.agent.money -= item.currentPrice * quantity;
+    this.agent.inventory.push(item, quantity);
+  }
 }
 
 /**
@@ -46,6 +64,14 @@ isis.Game.prototype.buyItem = function(item) {
  * User Story:
  * A player can sell items in a city. Each item has a cost and can be 
  * sold in bulk.
+
+click sell,
+prompt for much you want to sell,
+confirm the sale,
+calculate the total price of sale,
+add the balance of the sale,
+update the inventory
+
  *
  * Hint:
  * Use prompt() and confirm() to get and valid user input
@@ -55,8 +81,13 @@ isis.Game.prototype.buyItem = function(item) {
  * is trying to sell.
  */
 isis.Game.prototype.sellItem = function(inventoryItem) {
-  var value = inventoryItem.item.currentPrice * inventoryItem.quantity;
-  console.log('trying to sell ' + inventoryItem.item.name + ', I have ' + inventoryItem.quantity + ' worth $' + value);
+  // var value = inventoryItem.item.currentPrice * inventoryItem.quantity;
+  /*console.log('trying to sell ' + inventoryItem.item.name + ', I have ' + inventoryItem.quantity + ' worth $' + value);*/
+  var quantity = prompt("How much would you like to sell");
+  if (confirm("Are you sure?")) {
+    this.agent.money += inventoryItem.item.currentPrice * quantity;
+    this.agent.inventory.pop(inventoryItem.item, quantity);
+  }
 }
 
 
