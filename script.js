@@ -230,7 +230,7 @@ var isis = function() {
   
   Game.prototype.chooseBadThing = function() {
     // roll a die (d10) 1's are always bad things
-    var roll = getRandomIntInRange(1, 10);
+    var roll = getRandomIntInRange(1, 3);
     console.log('rolled ' + roll);
     if (roll === 1) {
       // pick a bad thing and run it

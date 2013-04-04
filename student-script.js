@@ -32,8 +32,6 @@ isis.Game.prototype.changeCity = function(newCity) {
   }
 }
 
-console.log("Matthew Vleming hijacked this project!")
-
 /*
  * This function will be called when the user buys an item
  *
@@ -104,24 +102,48 @@ isis.Game.prototype.sellItem = function(inventoryItem) {
  *
  * N.B.
  * The bad thing needs to follow the same format as the temporary bad thing
+  
+
  */
 isis.Game.prototype.initBadThings = function(badThings) {
   badThings.push({
-    name: "Temporary bad thing!",
+    name: "Custom fare hike",
     ohNoes: function(agent) {
-      alert("This is a demo bad thing, luckily nothing bad happened this time!");
+      alert("You got busted carrying cash through customs. You had to pay a 5% tax.");
+      agent.money = agent.money * .95;
+      alert("You lost a decent chunk");
     }
   });
   
   // Fill this one in with a new bad thing which could happen!
   // If you want, copy and paste it to make more bad things!
   badThings.push({
-    name: "Name your bad thing!",
+    name: "Search & seizure",
     ohNoes: function(agent) {
       // Your bad thing code goes here
+      alert("The police said you fit a profile. You got searched, and they seized!");
+      agent.money -= 100;
+      alert("You lost 100 bucks");
     }
   });
-  
+
+  badThings.push({
+    name: "Feeling the pressure",
+    ohNoes: function(agent) {
+      alert("You couldn't take the pressure of carrying around all that cash. You ordered bottle service at the club and got wasted.");
+      agent.money -= 100;
+      alert("You lost 100 bucks");
+    }
+  });
+
+  badThings.push({
+    name: "You got jumped",
+    ohNoes: function(agent) {
+      alert("You got jumped by a rival cartel member. They shook you down.");
+      agent.money -= 50;
+      alert("You lost 50 bucks");
+    }
+  })
 }
 
 /*************************/
@@ -139,7 +161,22 @@ isis.Game.prototype.initBadThings = function(badThings) {
  * If the player has more than $5000 then they should be ranked as a 'Double-0'.
  */
 isis.Agent.prototype.getRank = function(item) { 
-  return 'Agent';
+  if (this.money > 5000) 
+    {
+    return 'Double-0';
+    } 
+  else if (this.money > 1000)
+    { 
+    return 'Top Agent';
+    }
+  else if (this.money > 500)
+    {  
+    return 'Agent';
+    }
+  else 
+    {
+    return 'Rookie';
+    }
 }
 
 /*
