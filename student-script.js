@@ -32,6 +32,8 @@ isis.Game.prototype.changeCity = function(newCity) {
   }
 }
 
+console.log("Matthew Vleming hijacked this project!")
+
 /*
  * This function will be called when the user buys an item
  *
