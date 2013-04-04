@@ -188,8 +188,8 @@ isis.Agent.prototype.getRank = function(item) {
  * Use prompt() to get user input.
  */
 isis.Agent.prototype.init = function(item) { 
-  this.name = 'Sterling Archer'; // This should be set by the user
-  this.codename = 'Dutchess'; // This too
+  this.name = prompt("What is your agent's name?", "Sterling Archer");
+  this.codename = prompt("What is your codename?", "Dutchess");
 }
 
 
