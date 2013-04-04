@@ -192,8 +192,6 @@ isis.Agent.prototype.init = function(item) {
   this.codename = prompt("What is your codename?", "Dutchess");
 }
 
-
-
 // This runs the game, this HAS to be at the 
 // bottom of the file!
 $(function() {
